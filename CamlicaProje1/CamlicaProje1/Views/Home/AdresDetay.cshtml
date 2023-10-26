@@ -1,0 +1,32 @@
+﻿
+
+@using CamlicaProje1.Models;
+@model kullaniciBilgileri
+
+@{
+    ViewBag.Title = "Adresler";
+}
+
+<a class="" href="/Home/Index"><img src="~/Content/img/back-arrow.png" height="20px" width="20px"/></a>
+
+<a href="/Home/AdresEkle/@Model.kullaniciId">Yeni Adres Ekle</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Adres</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (adresBilgileri a in ViewBag.adres as List<adresBilgileri>)
+        {
+            if (a.kullaniciId == Model.kullaniciId)
+            {
+                <tr>
+                    <td>@a.adres</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

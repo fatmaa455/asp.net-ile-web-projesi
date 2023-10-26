@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UrunModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Barkodlar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Barkodu" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Birim" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Fiyat" Type="Double" />
+    <NavigationProperty Name="urunBilgileri" Relationship="Self.FK__urunBilgi__Barko__2A4B4B5E" FromRole="Barkodlar" ToRole="urunBilgileri" />
+  </EntityType>
+  <EntityType Name="Gruplar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grup" Type="Int32" />
+    <NavigationProperty Name="urunBilgileri" Relationship="Self.FK__urunBilgi__Grupl__2B3F6F97" FromRole="Gruplar" ToRole="urunBilgileri" />
+  </EntityType>
+  <EntityType Name="Resimler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Resim" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="urunBilgileri" Relationship="Self.FK__urunBilgi__Resim__29572725" FromRole="Resimler" ToRole="urunBilgileri" />
+  </EntityType>
+  <EntityType Name="urunBilgileri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunKodu" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="UrunAdi" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="KDVOrani" Type="Double" />
+    <Property Name="IndirimliTutar" Type="Double" />
+    <Property Name="Tutar" Type="Double" />
+    <Property Name="Envanter" Type="Double" />
+    <Property Name="UreticiFirmaAdi" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="n11" Type="Double" />
+    <Property Name="ggidiyor" Type="Double" />
+    <Property Name="getir" Type="Double" />
+    <Property Name="trendyol_marketplace" Type="Double" />
+    <Property Name="hepsiburada" Type="Double" />
+    <Property Name="trendyol" Type="Double" />
+    <Property Name="amazon" Type="Double" />
+    <Property Name="eptt" Type="Double" />
+    <Property Name="GuncellemeTarihi" Type="DateTime" Precision="3" />
+    <Property Name="UrunAciklamasi" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ResimlerId" Type="Int32" />
+    <Property Name="BarkodlarId" Type="Int32" />
+    <Property Name="GruplarId" Type="Int32" />
+    <Property Name="Kategori" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="EticaretteGoruntulensin" Type="Boolean" />
+    <NavigationProperty Name="Barkodlar" Relationship="Self.FK__urunBilgi__Barko__2A4B4B5E" FromRole="urunBilgileri" ToRole="Barkodlar" />
+    <NavigationProperty Name="Gruplar" Relationship="Self.FK__urunBilgi__Grupl__2B3F6F97" FromRole="urunBilgileri" ToRole="Gruplar" />
+    <NavigationProperty Name="Resimler" Relationship="Self.FK__urunBilgi__Resim__29572725" FromRole="urunBilgileri" ToRole="Resimler" />
+  </EntityType>
+  <Association Name="FK__urunBilgi__Barko__2A4B4B5E">
+    <End Role="Barkodlar" Type="Self.Barkodlar" Multiplicity="0..1" />
+    <End Role="urunBilgileri" Type="Self.urunBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Barkodlar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="urunBilgileri">
+        <PropertyRef Name="BarkodlarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__urunBilgi__Grupl__2B3F6F97">
+    <End Role="Gruplar" Type="Self.Gruplar" Multiplicity="0..1" />
+    <End Role="urunBilgileri" Type="Self.urunBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gruplar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="urunBilgileri">
+        <PropertyRef Name="GruplarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__urunBilgi__Resim__29572725">
+    <End Role="Resimler" Type="Self.Resimler" Multiplicity="0..1" />
+    <End Role="urunBilgileri" Type="Self.urunBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resimler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="urunBilgileri">
+        <PropertyRef Name="ResimlerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UrunEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Barkodlar" EntityType="Self.Barkodlar" />
+    <EntitySet Name="Gruplar" EntityType="Self.Gruplar" />
+    <EntitySet Name="Resimler" EntityType="Self.Resimler" />
+    <EntitySet Name="urunBilgileri" EntityType="Self.urunBilgileri" />
+    <AssociationSet Name="FK__urunBilgi__Barko__2A4B4B5E" Association="Self.FK__urunBilgi__Barko__2A4B4B5E">
+      <End Role="Barkodlar" EntitySet="Barkodlar" />
+      <End Role="urunBilgileri" EntitySet="urunBilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK__urunBilgi__Grupl__2B3F6F97" Association="Self.FK__urunBilgi__Grupl__2B3F6F97">
+      <End Role="Gruplar" EntitySet="Gruplar" />
+      <End Role="urunBilgileri" EntitySet="urunBilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK__urunBilgi__Resim__29572725" Association="Self.FK__urunBilgi__Resim__29572725">
+      <End Role="Resimler" EntitySet="Resimler" />
+      <End Role="urunBilgileri" EntitySet="urunBilgileri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

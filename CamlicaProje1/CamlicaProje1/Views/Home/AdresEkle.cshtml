@@ -1,0 +1,30 @@
+﻿
+
+@using CamlicaProje1.Models
+@model adresBilgileri
+
+@{
+    ViewBag.Title = "Adres Ekle";
+}
+
+<h2>Adres Ekleme Sayfası</h2>
+
+<form action="/Home/AdresEkle/@Model.kullaniciId" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <input type="hidden" class="form-control" value="@Model.adresId" id="adresId" name="adresId">
+    </div>
+
+    <div class="form-group">
+        <label for="adres">Adres: </label>
+        <input type="text" class="form-control" value="@Model.adres" id="adres" name="adres">
+    </div>
+
+    <div class="form-group form-check">
+    </div>
+    <button type="submit" class="btn btn-primary">Adres Ekle</button>
+
+    <a class="btn btn-info" href="/Home/Index">Vazgeç</a>
+
+</form>
+

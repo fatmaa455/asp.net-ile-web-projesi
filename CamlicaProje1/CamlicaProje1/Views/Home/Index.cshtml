@@ -1,0 +1,37 @@
+﻿
+
+@using CamlicaProje1.Models
+@model List<kullaniciBilgileri>
+
+@{
+    ViewBag.Title = "Anasayfa";
+}
+
+<a href="/Home/KullaniciEkle">Yeni kullanıcı ekle</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Kullanıcı adı</th>
+            <th>Email</th>
+            <th>Şifre</th>
+            <th>Adresler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var k in Model)
+        {
+            <tr>
+                <td>@k.ad</td>
+                <td>@k.soyad</td>
+                <td>@k.kullaniciAdi</td>
+                <td>@k.email</td>
+                <td>@k.sifre</td>
+                <td><a href="/Home/AdresDetay/@k.kullaniciId">Adresler</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

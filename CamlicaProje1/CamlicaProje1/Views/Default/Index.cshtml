@@ -1,0 +1,90 @@
+﻿
+
+@using CamlicaProje1.Controllers
+
+
+@{
+    ViewBag.Title = "Stoklar";
+}
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
+
+
+<table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ürün Kodu</th>
+            <th>Ürün Adı</th>
+            <th>KDV Oranı</th>
+            <th>İndirimli Tutar</th>
+            <th>Tutar</th>
+            <th>Envanter</th>
+            <th>Üretici Firma Adı</th>
+            <th>n11</th>
+            <th>gittigidiyor</th>
+            <th>getir</th>
+            <th>trendyol market</th>
+            <th>hepsiburada</th>
+            <th>trendyol</th>
+            <th>amazon</th>
+            <th>eptt</th>
+            <th>Güncellenme Tarihi</th>
+            <th>Ürün Açıklaması</th>
+            <th>Resimler</th>
+            <th>Barkodlar</th>
+            <th>Gruplar</th>
+            <th>Kategori</th>
+            <th>E-ticarette Görüntülensin</th>
+        </tr>
+    </thead>
+</table>
+
+
+
+@section scripts{
+    <script type="text/javascript" src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#myTable').DataTable({
+
+                scrollX: true,
+
+                "ajax": {
+                    "url": "/Default/GetData", 
+                    "dataSrc": "" 
+                },
+                "columns": [
+                    { "data": "ID" },
+                    { "data": "UrunKodu" },
+                    { "data": "UrunAdi" },
+                    { "data": "KDVOrani" },
+                    { "data": "IndirimliTutar" },
+                    { "data": "Tutar" },
+                    { "data": "Envanter" },
+                    { "data": "UreticiFirmaAdi" },
+                    { "data": "n11" },
+                    { "data": "ggidiyor" },
+                    { "data": "getir" },
+                    { "data": "trendyol_marketplace" },
+                    { "data": "hepsiburada" },
+                    { "data": "trendyol" },
+                    { "data": "amazon" },
+                    { "data": "eptt" },
+                    { "data": "GuncellemeTarihi" },
+                    { "data": "UrunAciklamasi" },
+                    { "data": "Resimler" },
+                    { "data": "Barkodlar" },
+                    { "data": "Gruplar" },
+                    { "data": "Kategori" },
+                    { "data": "EticaretteGoruntulensin" }
+                ]
+            });
+        });
+
+    </script>
+}

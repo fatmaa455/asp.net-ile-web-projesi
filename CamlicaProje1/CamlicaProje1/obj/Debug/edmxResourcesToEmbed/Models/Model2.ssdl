@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UrunModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Barkodlar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Barkodu" Type="varchar" MaxLength="1" />
+    <Property Name="Birim" Type="varchar" MaxLength="1" />
+    <Property Name="Fiyat" Type="float" />
+  </EntityType>
+  <EntityType Name="Gruplar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Grup" Type="int" />
+  </EntityType>
+  <EntityType Name="Resimler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Resim" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="urunBilgileri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrunKodu" Type="varchar" MaxLength="1" />
+    <Property Name="UrunAdi" Type="varchar" MaxLength="1" />
+    <Property Name="KDVOrani" Type="float" />
+    <Property Name="IndirimliTutar" Type="float" />
+    <Property Name="Tutar" Type="float" />
+    <Property Name="Envanter" Type="float" />
+    <Property Name="UreticiFirmaAdi" Type="varchar" MaxLength="1" />
+    <Property Name="n11" Type="float" />
+    <Property Name="ggidiyor" Type="float" />
+    <Property Name="getir" Type="float" />
+    <Property Name="trendyol_marketplace" Type="float" />
+    <Property Name="hepsiburada" Type="float" />
+    <Property Name="trendyol" Type="float" />
+    <Property Name="amazon" Type="float" />
+    <Property Name="eptt" Type="float" />
+    <Property Name="GuncellemeTarihi" Type="datetime" />
+    <Property Name="UrunAciklamasi" Type="varchar" MaxLength="1" />
+    <Property Name="ResimlerId" Type="int" />
+    <Property Name="BarkodlarId" Type="int" />
+    <Property Name="GruplarId" Type="int" />
+    <Property Name="Kategori" Type="varchar" MaxLength="1" />
+    <Property Name="EticaretteGoruntulensin" Type="bit" />
+  </EntityType>
+  <Association Name="FK__urunBilgi__Barko__2A4B4B5E">
+    <End Role="Barkodlar" Type="Self.Barkodlar" Multiplicity="0..1" />
+    <End Role="urunBilgileri" Type="Self.urunBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Barkodlar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="urunBilgileri">
+        <PropertyRef Name="BarkodlarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__urunBilgi__Grupl__2B3F6F97">
+    <End Role="Gruplar" Type="Self.Gruplar" Multiplicity="0..1" />
+    <End Role="urunBilgileri" Type="Self.urunBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gruplar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="urunBilgileri">
+        <PropertyRef Name="GruplarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__urunBilgi__Resim__29572725">
+    <End Role="Resimler" Type="Self.Resimler" Multiplicity="0..1" />
+    <End Role="urunBilgileri" Type="Self.urunBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resimler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="urunBilgileri">
+        <PropertyRef Name="ResimlerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UrunModelStoreContainer">
+    <EntitySet Name="Barkodlar" EntityType="Self.Barkodlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gruplar" EntityType="Self.Gruplar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Resimler" EntityType="Self.Resimler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="urunBilgileri" EntityType="Self.urunBilgileri" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__urunBilgi__Barko__2A4B4B5E" Association="Self.FK__urunBilgi__Barko__2A4B4B5E">
+      <End Role="Barkodlar" EntitySet="Barkodlar" />
+      <End Role="urunBilgileri" EntitySet="urunBilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK__urunBilgi__Grupl__2B3F6F97" Association="Self.FK__urunBilgi__Grupl__2B3F6F97">
+      <End Role="Gruplar" EntitySet="Gruplar" />
+      <End Role="urunBilgileri" EntitySet="urunBilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK__urunBilgi__Resim__29572725" Association="Self.FK__urunBilgi__Resim__29572725">
+      <End Role="Resimler" EntitySet="Resimler" />
+      <End Role="urunBilgileri" EntitySet="urunBilgileri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
