@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CAMLICAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="adresBilgileri">
+    <Key>
+      <PropertyRef Name="adresId" />
+    </Key>
+    <Property Name="adresId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kullaniciId" Type="Int32" />
+    <NavigationProperty Name="kullaniciBilgileri" Relationship="Self.FK__adresBilg__kulla__25869641" FromRole="adresBilgileri" ToRole="kullaniciBilgileri" />
+  </EntityType>
+  <EntityType Name="kullaniciBilgileri">
+    <Key>
+      <PropertyRef Name="kullaniciId" />
+    </Key>
+    <Property Name="kullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="adresBilgileri" Relationship="Self.FK__adresBilg__kulla__25869641" FromRole="kullaniciBilgileri" ToRole="adresBilgileri" />
+  </EntityType>
+  <Association Name="FK__adresBilg__kulla__25869641">
+    <End Role="kullaniciBilgileri" Type="Self.kullaniciBilgileri" Multiplicity="0..1" />
+    <End Role="adresBilgileri" Type="Self.adresBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kullaniciBilgileri">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="adresBilgileri">
+        <PropertyRef Name="kullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CAMLICAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="adresBilgileri" EntityType="Self.adresBilgileri" />
+    <EntitySet Name="kullaniciBilgileri" EntityType="Self.kullaniciBilgileri" />
+    <AssociationSet Name="FK__adresBilg__kulla__25869641" Association="Self.FK__adresBilg__kulla__25869641">
+      <End Role="kullaniciBilgileri" EntitySet="kullaniciBilgileri" />
+      <End Role="adresBilgileri" EntitySet="adresBilgileri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

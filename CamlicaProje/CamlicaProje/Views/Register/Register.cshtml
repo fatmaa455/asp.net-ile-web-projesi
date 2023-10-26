@@ -1,0 +1,114 @@
+﻿
+
+@using CamlicaProje.Models
+@model kullaniciBilgileri
+
+@{
+    ViewBag.Title = "Kayıt Ol";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Register</title>
+
+    <link href="~/Content/css/stil.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <img class="bg-register-image" src="~/Content/img/registerImage.jpg" height="90%" width="110%"/>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Yeni Bir Hesap Oluştur !</h1>
+                            </div>
+                            
+                            @ViewBag.Mesaj
+                            
+                            
+                            <form class="row g-3 needs-validation" method="post" action="/Register/Register/">
+                                
+                                <div class="col-12">
+                                    <label for="ad" class="form-label">Ad</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" id="ad" class="form-control" name="ad" required/>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="soyad" class="form-label">Soyad</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" id="soyad" class="form-control" name="soyad" required />
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" id="kullaniciAdi" class="form-control" name="kullaniciAdi" required/>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" id="email" class="form-control" name="email" required />
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12 space">
+                                    <label for="sifre" class="form-label">Şifre</label>
+                                    <div class="input-group has-validation">
+                                        <input type="password" id="sifre" class="form-control" name="sifre" required/>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <button class="btn btn-primary btn-user btn-block" type="submit">Kayıt Ol !</button>
+                                </div>
+                            
+                            </form>
+                            
+                            <hr>
+                            
+                            <div class="text-center">
+                                <a class="small" href="/Login/Login/">Zaten bir hesabın var mı ? Giriş Yap !</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+
+</body>
+</html>
+
+
+

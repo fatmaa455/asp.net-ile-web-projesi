@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CAMLICAModelStoreContainer" CdmEntityContainer="CAMLICAEntities">
+    <EntitySetMapping Name="adresBilgileri">
+      <EntityTypeMapping TypeName="CAMLICAModel.adresBilgileri">
+        <MappingFragment StoreEntitySet="adresBilgileri">
+          <ScalarProperty Name="adresId" ColumnName="adresId" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kullaniciBilgileri">
+      <EntityTypeMapping TypeName="CAMLICAModel.kullaniciBilgileri">
+        <MappingFragment StoreEntitySet="kullaniciBilgileri">
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+          <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

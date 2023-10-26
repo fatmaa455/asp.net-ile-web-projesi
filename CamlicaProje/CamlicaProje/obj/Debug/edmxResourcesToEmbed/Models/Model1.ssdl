@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CAMLICAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="adresBilgileri">
+    <Key>
+      <PropertyRef Name="adresId" />
+    </Key>
+    <Property Name="adresId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adres" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="kullaniciId" Type="int" />
+  </EntityType>
+  <EntityType Name="kullaniciBilgileri">
+    <Key>
+      <PropertyRef Name="kullaniciId" />
+    </Key>
+    <Property Name="kullaniciId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullaniciAdi" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="soyad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="sifre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__adresBilg__kulla__25869641">
+    <End Role="kullaniciBilgileri" Type="Self.kullaniciBilgileri" Multiplicity="0..1" />
+    <End Role="adresBilgileri" Type="Self.adresBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kullaniciBilgileri">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="adresBilgileri">
+        <PropertyRef Name="kullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CAMLICAModelStoreContainer">
+    <EntitySet Name="adresBilgileri" EntityType="Self.adresBilgileri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kullaniciBilgileri" EntityType="Self.kullaniciBilgileri" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__adresBilg__kulla__25869641" Association="Self.FK__adresBilg__kulla__25869641">
+      <End Role="kullaniciBilgileri" EntitySet="kullaniciBilgileri" />
+      <End Role="adresBilgileri" EntitySet="adresBilgileri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
